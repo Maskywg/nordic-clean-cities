@@ -72,10 +72,15 @@ const lyricsToggle = document.querySelector('.lyrics-toggle');
 const lyricsClose = document.querySelector('.lyrics-close');
 const lyricsScroll = document.getElementById('lyrics-scroll');
 const musicStatus = document.getElementById('music-status');
-const lyricEntries = [];
-let activeLyricIndex = -1;
 let lyricsDismissed = false;
-let lyricAnimationFrame = 0;
+
+const languageLabels = {
+  dk: '🇩🇰 丹麥語',
+  se: '🇸🇪 瑞典語',
+  no: '🇳🇴 挪威語',
+  fi: '🇫🇮 芬蘭語',
+  mix: '北歐多語'
+};
 
 function lyricLanguage(sectionLanguage, text) {
   if (text.startsWith('🇩🇰')) return 'dk';
@@ -88,32 +93,20 @@ function lyricLanguage(sectionLanguage, text) {
 function renderLyrics() {
   if (!lyricsScroll || !Array.isArray(window.NORDIC_LYRICS)) return;
   window.NORDIC_LYRICS.forEach((section) => {
-    const heading = document.createElement('p');
+    const heading = document.createElement('div');
     heading.className = 'lyrics-section';
-    heading.textContent = section.title;
+    const headingTitle = document.createElement('span');
+    headingTitle.textContent = section.title;
+    const headingLanguage = document.createElement('strong');
+    headingLanguage.textContent = section.label || languageLabels[section.lang] || languageLabels.mix;
+    heading.append(headingTitle, headingLanguage);
     lyricsScroll.appendChild(heading);
-    section.lines.forEach((text, lineIndex) => {
-      const line = document.createElement('button');
-      line.type = 'button';
+    section.lines.forEach((text) => {
+      const line = document.createElement('p');
       line.className = 'lyric-line';
       line.dataset.lang = lyricLanguage(section.lang, text);
       line.textContent = text;
       lyricsScroll.appendChild(line);
-      const fixedStart = section.times?.[lineIndex];
-      const entry = {
-        element: line,
-        text,
-        sectionStart: lineIndex === 0,
-        start: Number.isFinite(fixedStart) ? fixedStart : 0,
-        hasFixedStart: Number.isFinite(fixedStart)
-      };
-      lyricEntries.push(entry);
-      line.addEventListener('click', async () => {
-        if (!backgroundMusic) return;
-        backgroundMusic.currentTime = entry.start;
-        await playBackgroundMusic();
-        updateLyrics(entry.start, true);
-      });
     });
   });
 }
@@ -122,50 +115,6 @@ function setLyricsOpen(open) {
   if (!lyricsPanel || !lyricsToggle) return;
   lyricsPanel.hidden = !open;
   lyricsToggle.setAttribute('aria-expanded', String(open));
-}
-
-function buildLyricTimeline() {
-  if (!backgroundMusic || !Number.isFinite(backgroundMusic.duration) || !lyricEntries.length) return;
-  if (lyricEntries.every((entry) => entry.hasFixedStart)) return;
-  const lead = 3.5;
-  const usable = Math.max(1, backgroundMusic.duration - lead - 3);
-  const weights = lyricEntries.map(({ text, sectionStart }) => {
-    const cleanLength = text.replace(/^🇩🇰 |^🇸🇪 |^🇳🇴 |^🇫🇮 /, '').length;
-    return Math.max(1.5, Math.min(3.5, 1.25 + cleanLength / 20)) + (sectionStart ? 0.55 : 0);
-  });
-  const scale = usable / weights.reduce((sum, value) => sum + value, 0);
-  let cursor = lead;
-  lyricEntries.forEach((entry, index) => {
-    entry.start = cursor;
-    cursor += weights[index] * scale;
-  });
-}
-
-function updateLyrics(time, forceScroll = false) {
-  if (!lyricEntries.length) return;
-  let nextIndex = 0;
-  for (let index = lyricEntries.length - 1; index >= 0; index -= 1) {
-    if (time >= lyricEntries[index].start) {
-      nextIndex = index;
-      break;
-    }
-  }
-  if (nextIndex === activeLyricIndex && !forceScroll) return;
-  lyricEntries[activeLyricIndex]?.element.classList.remove('is-current');
-  const active = lyricEntries[nextIndex]?.element;
-  active?.classList.add('is-current');
-  activeLyricIndex = nextIndex;
-  if (!lyricsPanel?.hidden && active && lyricsScroll) {
-    const targetTop = Math.max(0, active.offsetTop - lyricsScroll.clientHeight * 0.42);
-    if (typeof lyricsScroll.scrollTo === 'function') lyricsScroll.scrollTo({ top: targetTop, behavior: 'smooth' });
-    else lyricsScroll.scrollTop = targetTop;
-  }
-}
-
-function syncLyricsContinuously() {
-  if (!backgroundMusic || backgroundMusic.paused) return;
-  updateLyrics(backgroundMusic.currentTime);
-  lyricAnimationFrame = window.requestAnimationFrame(syncLyricsContinuously);
 }
 
 function setMusicStatus(message, isError = false) {
@@ -179,7 +128,6 @@ lyricsToggle?.addEventListener('click', () => {
   const open = lyricsToggle.getAttribute('aria-expanded') !== 'true';
   lyricsDismissed = false;
   setLyricsOpen(open);
-  if (open) updateLyrics(backgroundMusic?.currentTime || 0, true);
 });
 lyricsClose?.addEventListener('click', () => {
   lyricsDismissed = true;
@@ -215,7 +163,6 @@ musicToggle?.addEventListener('click', async () => {
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
     updateMusicButton(false);
-    updateLyrics(0, true);
   }
 });
 
@@ -225,23 +172,15 @@ document.addEventListener('pointerdown', (event) => {
 }, { once: true });
 
 backgroundMusic?.addEventListener('loadedmetadata', () => {
-  buildLyricTimeline();
-  updateLyrics(backgroundMusic.currentTime, true);
   setMusicStatus(`歌曲已就緒 · ${Math.floor(backgroundMusic.duration / 60)}:${String(Math.floor(backgroundMusic.duration % 60)).padStart(2, '0')}`);
 });
-backgroundMusic?.addEventListener('durationchange', buildLyricTimeline);
-backgroundMusic?.addEventListener('timeupdate', () => updateLyrics(backgroundMusic.currentTime));
-backgroundMusic?.addEventListener('seeked', () => updateLyrics(backgroundMusic.currentTime, true));
 backgroundMusic?.addEventListener('play', () => {
   updateMusicButton(true);
-  setMusicStatus('播放中 · 歌詞會隨音樂自動捲動');
+  setMusicStatus('播放中 · 歌詞可自由上下捲動閱讀');
   if (!lyricsDismissed) setLyricsOpen(true);
-  window.cancelAnimationFrame(lyricAnimationFrame);
-  lyricAnimationFrame = window.requestAnimationFrame(syncLyricsContinuously);
 });
 backgroundMusic?.addEventListener('pause', () => {
   updateMusicButton(false);
-  window.cancelAnimationFrame(lyricAnimationFrame);
   if (backgroundMusic.currentTime > 0) setMusicStatus('已暫停 · 按播放鍵可繼續');
 });
 backgroundMusic?.addEventListener('error', () => {

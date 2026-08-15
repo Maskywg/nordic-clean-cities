@@ -1,6 +1,6 @@
 window.NORDIC_LYRICS = [
   {
-    title: 'Intro — Dansk 🇩🇰', lang: 'dk', times: [10.64, 13.8, 16.46, 19.44, 22.18, 24.9, 27.8, 31.56], lines: [
+    title: 'Intro — Dansk', lang: 'dk', label: '🇩🇰 丹麥語', lines: [
       'Morgenregn på brosten, byen vågner langsomt op',
       'Kaffen er lidt varm endnu, jeg stopper ikke op',
       'Hænder på mit styr, og vinden siger godmorgen',
@@ -12,7 +12,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Verse 1 — Svenska 🇸🇪', lang: 'se', times: [38.68, 41.9, 45, 47.92, 51.1, 53.84, 56.86, 59.82], lines: [
+    title: 'Verse 1 — Svenska', lang: 'se', label: '🇸🇪 瑞典語', lines: [
       'Jag trampar genom stan, låter husen glida förbi',
       'Någon springer efter bussen, men jag har gott om tid',
       'Regnet ligger kvar som speglar över varje gata',
@@ -24,7 +24,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Verse 2 — Norsk 🇳🇴', lang: 'no', times: [67.74, 71.24, 74.26, 77.08, 81.08, 85.4, 88.08, 91.22], lines: [
+    title: 'Verse 2 — Norsk', lang: 'no', label: '🇳🇴 挪威語', lines: [
       'Bare tråkk, bare pust, bare hjul mot våt asfalt',
       'Byen snakker lavt i regnet, alt er egentlig normalt',
       'Noen sykler fort forbi meg, elektrisk, nesten lydløs',
@@ -36,7 +36,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Hook — Four Languages', lang: 'mix', times: [95, 95.9, 96.8, 97.7, 98.6, 99.5, 100.4, 101.3, 102.2, 103.2, 104.3, 105.4], lines: [
+    title: 'Hook — Four Languages', lang: 'mix', label: '🇩🇰🇳🇴🇸🇪🇫🇮 四國語言', lines: [
       '🇩🇰 Træd videre', '🇳🇴 Bare tråkk', '🇸🇪 Fortsätt trampa', '🇫🇮 Polje vaan',
       '🇩🇰 Hjulene går', '🇳🇴 Byen går forbi', '🇸🇪 Ingen brådska', '🇫🇮 Ei kiire mihinkään',
       'Træd — tråkk — trampa — polje', 'Rundt og rundt igen',
@@ -44,7 +44,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Verse 3 — Suomi 🇫🇮', lang: 'fi', times: [107.9, 110.66, 114.26, 117.08, 120.66, 122.98, 126.08, 129.02], lines: [
+    title: 'Verse 3 — Suomi', lang: 'fi', label: '🇫🇮 芬蘭語', lines: [
       'Poljen hiljaa kaupungin halki, sade lyö katuun',
       'Joku juoksee ratikkaan, minä en lähde mukaan',
       'Pyörän ketju laulaa pientä vanhaa melodiaa',
@@ -56,7 +56,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Verse 4 — Dansk + Svenska', lang: 'mix', times: [133.58, 136.84, 140.06, 143.16, 146.78, 150.44, 155.1, 157.68, 160.7, 163.3], lines: [
+    title: 'Verse 4 — Dansk + Svenska', lang: 'mix', label: '🇩🇰🇸🇪 丹麥語＋瑞典語', lines: [
       '🇩🇰 Havnen ligger gråblå, vinden kommer ind fra nord',
       '🇩🇰 Jeg tænker på hvor mange mennesker der fulgte samme spor',
       '🇸🇪 Gamla tegelhus står kvar, nya fönster speglar skyar',
@@ -70,7 +70,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Verse 5 — Norsk + Suomi', lang: 'mix', times: [167.74, 171.56, 175.58, 178.24, 181.56, 184.8, 189.78, 191.36, 192.56, 194.2], lines: [
+    title: 'Verse 5 — Norsk + Suomi', lang: 'mix', label: '🇳🇴🇫🇮 挪威語＋芬蘭語', lines: [
       '🇳🇴 Fra Oslo gjennom regnet, langs havna, forbi tog',
       '🇳🇴 Ser folk med blikk på skjermen, alle følger samme klokke',
       '🇫🇮 Helsingin tuuli kertoo jotain mitä en helt ymmärrä',
@@ -82,7 +82,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Hook — Four Languages', lang: 'mix', times: [198, 200.3, 202.6, 204.9, 207.2, 209.5, 211.8, 214.1, 216.4, 218.7, 221, 223.5], lines: [
+    title: 'Hook — Four Languages', lang: 'mix', label: '🇩🇰🇳🇴🇸🇪🇫🇮 四國語言', lines: [
       '🇩🇰 Træd videre', '🇳🇴 Bare tråkk', '🇸🇪 Fortsätt trampa', '🇫🇮 Polje vaan',
       '🇩🇰 Ingen hast', '🇳🇴 Ingen stress', '🇸🇪 Ta det lugnt', '🇫🇮 Ei kiirettä',
       'Træd — tråkk — trampa — polje', 'Fire byer, samme vind',
@@ -90,7 +90,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Bridge — Suomi', lang: 'fi', times: [226.44, 227.94, 229.44, 230.83, 232.22, 233.58, 234.94, 236.22], lines: [
+    title: 'Bridge — Suomi', lang: 'fi', label: '🇫🇮 芬蘭語', lines: [
       'Jos pyörä pysähtyy', 'tasapaino katoaa',
       'Jos elämä pysähtyy', 'ehkä käy samoin',
       'Ei tarvitse ajaa nopeasti', 'ei tarvitse tietää minne',
@@ -98,7 +98,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Bridge Response — Svenska / Norsk / Dansk', lang: 'mix', times: [241.2, 243.2, 244.62, 246.5, 248, 250.04, 252.22, 253.76, 255.6], lines: [
+    title: 'Bridge Response — Svenska / Norsk / Dansk', lang: 'mix', label: '🇸🇪🇳🇴🇩🇰 三國語言', lines: [
       '🇸🇪 Lite framåt', '🇸🇪 lite långsamt',
       '🇳🇴 Ingen trenger å vinne', '🇳🇴 hele tiden',
       '🇩🇰 Bare hold balancen', '🇩🇰 og se dig omkring',
@@ -106,7 +106,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Final Verse — Four-way Rap', lang: 'mix', times: [261.36, 264.66, 267.66, 270.3, 274.26, 276.02, 277.24, 278.5, 280.92, 282.26, 283.86, 285.02, 286.24, 287.56, 288.82, 290.1], lines: [
+    title: 'Final Verse — Four-way Rap', lang: 'mix', label: '🇩🇰🇸🇪🇳🇴🇫🇮 四國語言', lines: [
       '🇩🇰 København i regnen, cykellygter gennem natten',
       '🇸🇪 Stockholm över broarna, månen ligger över vattnet',
       '🇳🇴 Oslo langs fjorden, vinden følger meg hjem',
@@ -117,7 +117,7 @@ window.NORDIC_LYRICS = [
     ]
   },
   {
-    title: 'Final Hook', lang: 'mix', times: [290.66, 291.74, 292.82, 293.9, 294.98, 296.06, 297.14, 298.22, 299.3, 300.38, 301.46, 302.54, 303.62, 304.7, 305.78, 306.86, 307.94], lines: [
+    title: 'Final Hook', lang: 'mix', label: '🇩🇰🇳🇴🇸🇪🇫🇮 四國語言', lines: [
       '🇩🇰 Træd videre', '🇳🇴 Bare tråkk', '🇸🇪 Fortsätt trampa', '🇫🇮 Polje vaan',
       '🇩🇰 Byen sover snart', '🇳🇴 Havet ligger stille', '🇸🇪 Ljuset försvinner', '🇫🇮 Ilta tulee hiljaa',
       'Træd — tråkk — trampa — polje', 'Rundt og rundt igen',
