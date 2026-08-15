@@ -63,3 +63,42 @@ if ('IntersectionObserver' in window) {
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+const backgroundMusic = document.getElementById('background-music');
+const musicToggle = document.querySelector('.music-toggle');
+const musicLabel = musicToggle?.querySelector('.music-label');
+
+function updateMusicButton(isPlaying) {
+  if (!musicToggle || !musicLabel) return;
+  musicToggle.classList.toggle('is-playing', isPlaying);
+  musicToggle.setAttribute('aria-pressed', String(isPlaying));
+  musicToggle.title = isPlaying ? '暫停背景音樂' : '播放背景音樂';
+  musicLabel.textContent = isPlaying ? '音樂播放中' : '播放音樂';
+}
+
+async function playBackgroundMusic() {
+  if (!backgroundMusic) return false;
+  backgroundMusic.volume = 0.32;
+  try {
+    await backgroundMusic.play();
+    updateMusicButton(true);
+    return true;
+  } catch {
+    updateMusicButton(false);
+    return false;
+  }
+}
+
+musicToggle?.addEventListener('click', async () => {
+  if (!backgroundMusic) return;
+  if (backgroundMusic.paused) await playBackgroundMusic();
+  else {
+    backgroundMusic.pause();
+    updateMusicButton(false);
+  }
+});
+
+window.addEventListener('load', playBackgroundMusic, { once: true });
+document.addEventListener('pointerdown', (event) => {
+  if (!event.target.closest('.music-toggle') && backgroundMusic?.paused) playBackgroundMusic();
+}, { once: true });
