@@ -72,8 +72,8 @@ function updateMusicButton(isPlaying) {
   if (!musicToggle || !musicLabel) return;
   musicToggle.classList.toggle('is-playing', isPlaying);
   musicToggle.setAttribute('aria-pressed', String(isPlaying));
-  musicToggle.title = isPlaying ? '暫停背景音樂' : '播放背景音樂';
-  musicLabel.textContent = isPlaying ? '音樂播放中' : '播放音樂';
+  musicToggle.title = isPlaying ? '停止播放音樂' : '播放背景音樂';
+  musicLabel.textContent = isPlaying ? '停止音樂' : '播放音樂';
 }
 
 async function playBackgroundMusic() {
@@ -94,6 +94,7 @@ musicToggle?.addEventListener('click', async () => {
   if (backgroundMusic.paused) await playBackgroundMusic();
   else {
     backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
     updateMusicButton(false);
   }
 });
