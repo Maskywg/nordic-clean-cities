@@ -22,6 +22,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <title>北歐四國｜四大都市微移動比較</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lyrics.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -554,10 +555,21 @@
       <a href="#top">回到頂端 ↑</a>
     </footer>
 
-    <audio id="background-music" src="audio/nordic-bicycle-flow.mp3" autoplay loop preload="metadata"></audio>
-    <button class="music-toggle" type="button" aria-controls="background-music" aria-pressed="false" title="播放背景音樂">
-      <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="music-label">播放音樂</span>
-    </button>
+    <audio id="background-music" src="audio/nordic-bicycle-flow.mp3?v=20260815-2" autoplay loop preload="metadata"></audio>
+    <aside class="lyrics-panel" id="lyrics-panel" aria-label="同步歌詞" hidden>
+      <header class="lyrics-header">
+        <div><span>同步歌詞</span><strong>Nordic Bicycle Flow</strong></div>
+        <button class="lyrics-close" type="button" aria-label="關閉歌詞">×</button>
+      </header>
+      <div class="lyrics-scroll" id="lyrics-scroll" aria-live="off"></div>
+      <p class="lyrics-sync-note">依歌曲段落自動同步 · 點歌詞可跳至該句</p>
+    </aside>
+    <div class="music-dock">
+      <button class="lyrics-toggle" type="button" aria-controls="lyrics-panel" aria-expanded="false">歌詞</button>
+      <button class="music-toggle" type="button" aria-controls="background-music" aria-pressed="false" title="播放背景音樂">
+        <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="music-label">播放音樂</span>
+      </button>
+    </div>
   </body>
 </html>
