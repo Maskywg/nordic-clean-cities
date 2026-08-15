@@ -128,6 +128,19 @@
     font-size:24px; font-weight:800; color:var(--water); margin:10px 0 4px;
   }
 
+  .diagram-card{
+    margin-top:16px; padding:20px 16px 14px; border-radius:14px;
+    background:var(--bg); border:1px solid var(--line);
+  }
+  .diagram-title{
+    font-size:13px; font-weight:700; color:var(--text-soft); margin-bottom:8px; text-align:center;
+  }
+  .diagram-card svg{width:100%; height:auto; display:block;}
+  .diagram-caption{margin:6px 2px 0; font-size:13px; color:var(--text-soft); text-align:center;}
+  .diagram-caption b{color:var(--water);}
+  .diagram-src{margin:10px 2px 0; font-size:12.5px; color:var(--text-soft);}
+  .diagram-src a{color:var(--water);}
+
   .callout{
     background:var(--accent-soft); border-radius:18px; padding:28px 30px; margin-top:32px;
     border:1px solid var(--line);
@@ -232,7 +245,50 @@
           <h3>赫爾辛基 Helsinki</h3>
           <span class="badge">全球第 8 名</span>
         </div>
-        <div class="why"><b>關鍵一招：</b>開創性打造「地底氣壓垃圾管道系統」——住宅區地面只留小型投入口，垃圾靠強力氣壓瞬間吸走，經地下管線直送處理站，市區街道因此幾乎看不到垃圾車與外露垃圾桶，從根本上減少「垃圾在街上曝光」的機會。</div>
+        <div class="why"><b>關鍵一招：</b>開創性打造「地底氣壓垃圾管道系統」（自動真空垃圾收集，如港區 Jätkäsaari 採用的 Envac 系統）——每棟建築地面只留一個小型分類投入口，垃圾先暫存在地下儲存槽，收運時中央站產生真空負壓，垃圾以時速約 70 公里的速度被「吸」進地下管線，最遠可送到 2 公里外的集中處理站壓縮密封，才由密閉貨車統一載走。整個社區因此完全看不到外露垃圾桶、垃圾車鑽進巷弄，也少了異味與鼠患困擾。赫爾辛基從 2013 年啟用這套系統至今，已涵蓋約 350 個投入點，每天處理超過 22 噸垃圾。</div>
+
+        <div class="diagram-card">
+          <div class="diagram-title">地底氣壓垃圾管道系統・運作流程</div>
+          <svg viewBox="0 0 920 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="赫爾辛基地底氣壓垃圾管道系統運作示意圖：住戶投入口、地下真空管線、集中處理站、密閉貨車外運">
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="var(--water)"/>
+              </marker>
+            </defs>
+            <line x1="110" y1="95" x2="800" y2="95" stroke="var(--water)" stroke-width="2.5" stroke-dasharray="2 10" stroke-linecap="round" marker-end="url(#arrowhead)"/>
+
+            <g>
+              <circle cx="70" cy="95" r="46" fill="var(--bg-card)" stroke="var(--line)" stroke-width="1.5"/>
+              <text x="70" y="105" text-anchor="middle" font-size="30">🏢</text>
+              <text x="70" y="163" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">住戶投入口</text>
+              <text x="70" y="180" text-anchor="middle" font-size="11" fill="var(--text-soft)">依類別分類丟入</text>
+            </g>
+
+            <g>
+              <circle cx="330" cy="95" r="46" fill="var(--bg-card)" stroke="var(--line)" stroke-width="1.5"/>
+              <text x="330" y="105" text-anchor="middle" font-size="30">🚇</text>
+              <text x="330" y="163" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">地下管線</text>
+              <text x="330" y="180" text-anchor="middle" font-size="11" fill="var(--text-soft)">暫存於地下槽</text>
+            </g>
+
+            <g>
+              <circle cx="590" cy="95" r="46" fill="var(--bg-card)" stroke="var(--line)" stroke-width="1.5"/>
+              <text x="590" y="105" text-anchor="middle" font-size="30">🌀</text>
+              <text x="590" y="163" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">集中處理站</text>
+              <text x="590" y="180" text-anchor="middle" font-size="11" fill="var(--text-soft)">壓縮並密封</text>
+            </g>
+
+            <g>
+              <circle cx="850" cy="95" r="46" fill="var(--bg-card)" stroke="var(--line)" stroke-width="1.5"/>
+              <text x="850" y="105" text-anchor="middle" font-size="30">🚛</text>
+              <text x="850" y="163" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">密閉貨車外運</text>
+              <text x="850" y="180" text-anchor="middle" font-size="11" fill="var(--text-soft)">不必進入巷弄</text>
+            </g>
+          </svg>
+          <p class="diagram-caption">真空負壓運送，時速約 <b>70 km</b>，最遠可達 <b>2 公里</b>外的集中處理站。</p>
+          <p class="diagram-src">延伸閱讀：<a href="https://www.envacgroup.com/insights/step-by-step-guide-to-pneumatic-waste-collection-system/" target="_blank" rel="noopener">Envac 官方系統運作說明</a>、<a href="https://en.wikipedia.org/wiki/Automated_vacuum_collection" target="_blank" rel="noopener">Automated Vacuum Collection（Wikipedia）</a></p>
+        </div>
+
         <div class="water-fact"><span class="icon">💧</span> 水源來自芬蘭第二大湖佩伊揚湖（Päijänne），透過全球數一數二長的岩石引水隧道送進市區。2025 年歐洲水質指數評比中，芬蘭自來水細菌數最低、純淨度全歐第一。</div>
       </div>
     </div>
