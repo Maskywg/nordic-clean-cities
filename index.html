@@ -132,6 +132,11 @@
     margin-top:16px; padding:20px 16px 14px; border-radius:14px;
     background:var(--bg); border:1px solid var(--line);
   }
+  .annotate-card{padding:0 28px; margin-top:-4px;}
+  .photo-annotate{position:relative; border-radius:14px; overflow:hidden; box-shadow:var(--shadow);}
+  .photo-annotate img{width:100%; height:auto; display:block;}
+  .annotate-overlay{position:absolute; inset:0; width:100%; height:100%;}
+  .annotate-card .photo-credit{margin-top:10px;}
   .diagram-title{
     font-size:13px; font-weight:700; color:var(--text-soft); margin-bottom:8px; text-align:center;
   }
@@ -211,6 +216,24 @@
         <img src="images/copenhagen-2.jpg" alt="哥本哈根 Gefion 噴泉">
         <img src="images/copenhagen-3.jpg" alt="哥本哈根歌劇院廣場">
       </div>
+
+      <div class="annotate-card">
+        <div class="photo-annotate">
+          <img src="images/copenhagen-dannebrog-copenhill.jpg" alt="丹麥皇家遊艇 Dannebrog 停泊於 Nyholm，背景可見 CopenHill 焚化發電廠冒著白煙">
+          <svg class="annotate-overlay" viewBox="0 0 1000 750" preserveAspectRatio="none" role="img" aria-label="標示出 CopenHill 焚化發電廠在畫面中的位置">
+            <line x1="765" y1="90" x2="825" y2="440" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="765" y1="90" x2="825" y2="440" stroke="var(--water)" stroke-width="0.75" stroke-linecap="round"/>
+            <circle cx="825" cy="440" r="5" fill="var(--water)" stroke="#ffffff" stroke-width="1.5"/>
+            <g>
+              <rect x="700" y="55" width="130" height="36" rx="4" fill="rgba(10,20,25,0.82)"/>
+              <text x="765" y="72" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="700">CopenHill</text>
+              <text x="765" y="85" text-anchor="middle" font-size="8.4" fill="#cfe8f2">Amager Bakke 焚化發電廠</text>
+            </g>
+          </svg>
+        </div>
+        <p class="photo-credit">實拍照片：丹麥皇家遊艇 Dannebrog 停泊於 Nyholm 海軍基地，右側為 18 世紀桅杆吊車 Mastekranen，背景可見 CopenHill 冒著白煙的煙囪與滑雪坡道屋頂。</p>
+      </div>
+
       <div class="body">
         <div class="title-row">
           <h3>哥本哈根 Copenhagen</h3>
