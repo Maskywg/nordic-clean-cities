@@ -27,6 +27,7 @@
         <a href="#cities">城市</a>
         <a href="#rights">路權</a>
         <a href="#rental">租借</a>
+        <a href="#pricing">費率</a>
         <a href="#field-notes">實拍</a>
         <a href="#takeaway">結論</a>
       </nav>
@@ -271,10 +272,10 @@
             </article>
 
             <article class="rental-panel" id="panel-sto" role="tabpanel" aria-labelledby="tab-sto" hidden>
-              <div class="panel-top"><p>02 — Stockholm</p><span>民營租車 + 指定停放</span></div>
-              <h3>單車靠租車店，<br />滑板車靠停車格。</h3>
+              <div class="panel-top"><p>02 — Stockholm</p><span>App 租車 + 指定停放</span></div>
+              <h3>共享車靠 App，<br />傳統車靠租車店。</h3>
               <div class="rental-columns">
-                <div><p class="mode-label">Bike</p><h4>民營租車為主</h4><p>可向 Gamla Stans Cykel、Cykelstallet 等租車店按時或按日租借；出發前確認營業季節。</p></div>
+                <div><p class="mode-label">Bike</p><h4>Voi・Bolt + 租車店</h4><p>Voi 與 Bolt 各獲准投放 1,500 輛共享單車；也可向 Gamla Stans Cykel、Cykelstallet 等店家按時或按日租借。</p></div>
                 <div><p class="mode-label">Scooter</p><h4>多家 App 業者</h4><p>全市總量上限 12,000 輛，約有 700 個停車格；老城與多處廣場、碼頭另有禁停區。</p></div>
               </div>
               <p class="traveler-tip"><span>旅人提示</span>結束滑板車行程前，先在 App 找到允許停放的位置，避免在老城才發現無法還車。</p>
@@ -303,10 +304,109 @@
         </div>
       </section>
 
+      <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">04 / Pricing</p>
+            <h2 id="pricing-title">各家租車費率</h2>
+          </div>
+          <p>以下均為當地幣別，查核日為 2026.08.15。票價不換算台幣；App 業者會依城市、時段、車種與活動調整，請以解鎖前畫面為準。</p>
+        </div>
+
+        <div class="price-legend" aria-label="費率類型說明">
+          <span><i class="price-dot price-dot-fixed"></i> 官方公開固定價</span>
+          <span><i class="price-dot price-dot-app"></i> App 即時報價</span>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card price-cph reveal">
+            <header><p>Denmark · 丹麥</p><span>CPH</span></header>
+            <h3>哥本哈根</h3>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Donkey Republic</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">選車時顯示</p>
+              <p>一般／電輔自行車依車型、據點與租期計價，可選按次、日、週或月方案。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Voi 電輔自行車</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">解鎖費 + 分鐘費／套票</p>
+              <p>掃描車把 QR Code 後，先看當下費率與可用套票，再綁定信用卡解鎖。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Lime 滑板車</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">解鎖費 + 每分鐘</p>
+              <p>費率可能隨地點與時段變動；掃 QR Code 後、開始行程前會顯示完整金額。</p>
+            </div>
+          </article>
+
+          <article class="price-card price-sto reveal">
+            <header><p>Sweden · 瑞典</p><span>STO</span></header>
+            <h3>斯德哥爾摩</h3>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Voi・Bolt 共享單車</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">解鎖前顯示</p>
+              <p>兩家獲准在市區投放共享單車，條款與即時價格均在各自 App 顯示。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Gamla Stans Cykel</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>2 小時</dt><dd>SEK 190</dd></div><div><dt>平日 10–18</dt><dd>SEK 320</dd></div><div><dt>24 小時</dt><dd>SEK 410</dd></div></dl>
+              <p>三速城市車；鎖與安全帽包含在價格內。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Cykelstallet</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>城市車 9–18</dt><dd>SEK 275</dd></div><div><dt>城市車 24 小時</dt><dd>SEK 325</dd></div><div><dt>電輔車 24 小時</dt><dd>SEK 650</dd></div></dl>
+              <p>租金含鎖、籃／貨架與安全帽；部分車種另有押金規定。</p>
+            </div>
+          </article>
+
+          <article class="price-card price-osl reveal">
+            <header><p>Norway · 挪威</p><span>OSL</span></header>
+            <h3>奧斯陸</h3>
+            <div class="price-system price-system-featured">
+              <div class="price-system-title"><h4>Oslo Bysykkel</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>旅客 3 日票</dt><dd>NOK 119</dd></div><div><dt>30 日訂閱</dt><dd>NOK 179</dd></div><div><dt>365 日票</dt><dd>NOK 599</dd></div></dl>
+              <p>3 日票的一般單車每趟含 180 分鐘；自首次解鎖起算 72 小時。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Oslo Bysykkel 單次</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>一次性註冊</dt><dd>NOK 3</dd></div><div><dt>一般車</dt><dd>解鎖 8 + 1／分</dd></div><div><dt>電輔車</dt><dd>解鎖 8 + 2／分</dd></div></dl>
+              <p>單次租借最長 180 分鐘；適合不想買票、只騎一次的旅人。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Bolt・Ryde・Voi 滑板車</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">解鎖費 + 每分鐘／套票</p>
+              <p>Bolt、Ryde 與 Voi 均以 App 即時顯示；Ryde 的分鐘數會進位到下一個完整分鐘。</p>
+            </div>
+          </article>
+
+          <article class="price-card price-hel reveal">
+            <header><p>Finland · 芬蘭</p><span>HEL</span></header>
+            <h3>赫爾辛基</h3>
+            <div class="price-system price-system-featured">
+              <div class="price-system-title"><h4>HSL City Bikes</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>日票</dt><dd>€5</dd></div><div><dt>週票</dt><dd>€10</dd></div><div><dt>自動續月票／季票</dt><dd>€10／€35</dd></div></dl>
+              <p>赫爾辛基與 Espoo 每趟 60 分鐘內不限次數；超過後每 30 分鐘加 €1。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>HSL 超時規則</h4><span class="price-tag price-tag-fixed">固定價</span></div>
+              <dl class="price-lines"><div><dt>單趟上限</dt><dd>5 小時</dd></div><div><dt>逾時費</dt><dd>€80 + 超時費</dd></div></dl>
+              <p>還車後可立即再借；務必確認 App 已成功結束行程。</p>
+            </div>
+            <div class="price-system">
+              <div class="price-system-title"><h4>Voi・Dott・Ryde 滑板車</h4><span class="price-tag price-tag-app">App 價</span></div>
+              <p class="price-amount">解鎖費 + 每分鐘／日週月票</p>
+              <p>三家皆以 App 顯示當地即時價格與套票；Dott 可選日、週或月 pass。</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="pricing-note"><strong>看價技巧：</strong>先點地圖上的車輛或掃描 QR Code，確認解鎖費、分鐘費、套票有效城市、暫停是否繼續計費，以及停車失敗可能產生的額外費用，再按下開始。</p>
+      </section>
+
       <section class="section field-notes-section" id="field-notes" aria-labelledby="field-notes-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">04 / Field Notes</p>
+            <p class="kicker">05 / Field Notes</p>
             <h2 id="field-notes-title">旅途中的移動現場</h2>
           </div>
           <p>主軸仍是四國首都；另外收錄沿途城市作為延伸觀察。照片完整保留原始比例，看自行車道、號誌、停車與大眾運輸如何接在一起。</p>
@@ -389,7 +489,7 @@
       <section class="section takeaway-section" id="takeaway" aria-labelledby="takeaway-title">
         <div class="section-heading light-heading">
           <div>
-            <p class="kicker">05 / Takeaway</p>
+            <p class="kicker">06 / Takeaway</p>
             <h2 id="takeaway-title">每座城，一句話</h2>
           </div>
         </div>
@@ -416,9 +516,21 @@
             <li><a href="https://trafik.stockholm/trafikregler/elsparkcyklar/" target="_blank" rel="noreferrer">斯德哥爾摩市｜電動滑板車與停車</a></li>
             <li><a href="https://www.vegvesen.no/en/traffic-information/traffic-safety/safety-and-electric-scooters/traffic-rules/" target="_blank" rel="noreferrer">挪威公共道路管理局｜電動滑板車規則</a></li>
             <li><a href="https://oslobysykkel.no/en/how-it-works" target="_blank" rel="noreferrer">Oslo Bysykkel｜使用方式</a></li>
+            <li><a href="https://oslobysykkel.no/en/buy" target="_blank" rel="noreferrer">Oslo Bysykkel｜2026 官方費率</a></li>
             <li><a href="https://www.liikenneturva.fi/en/road-safety/electricmobilitydevices/" target="_blank" rel="noreferrer">芬蘭道路安全委員會｜電動微移動規則</a></li>
             <li><a href="https://www.hel.fi/en/urban-environment-and-traffic/cycling/electric-scooters" target="_blank" rel="noreferrer">赫爾辛基市｜共享滑板車限制</a></li>
             <li><a href="https://www.hsl.fi/en/citybikes" target="_blank" rel="noreferrer">HSL｜Helsinki &amp; Espoo City Bikes</a></li>
+            <li><a href="https://www.hsl.fi/en/hsl/news/news/2026/03/city-bikes-return-to-the-streets--the-season-starts-on-1-april-in-helsinki-and-espoo" target="_blank" rel="noreferrer">HSL｜2026 車季與季票價格確認</a></li>
+            <li><a href="https://www.hsl.fi/en/hsl/news/news/2025/03/city-bike-season-to-start-in-helsinki-espoo-and-vantaa-on-1-april" target="_blank" rel="noreferrer">HSL｜City Bikes 固定票價與超時費</a></li>
+            <li><a href="https://gamlastanscykel.squarespace.com/hyrcyklar" target="_blank" rel="noreferrer">Gamla Stans Cykel｜官方租車費率</a></li>
+            <li><a href="https://cykelstallet.se/wp-content/uploads/2025/01/hyrpriser-cyklar-och-tillbehor-2.pdf" target="_blank" rel="noreferrer">Cykelstallet｜官方租車價目表</a></li>
+            <li><a href="https://cykla.stockholm/hyrcyklar/" target="_blank" rel="noreferrer">斯德哥爾摩市｜Voi 與 Bolt 共享單車</a></li>
+            <li><a href="https://www.donkey.bike/da/cities/copenhagen" target="_blank" rel="noreferrer">Donkey Republic｜哥本哈根租車方案</a></li>
+            <li><a href="https://voi.com/fr/prix-et-pass" target="_blank" rel="noreferrer">Voi｜價格依城市、時段與車型變動</a></li>
+            <li><a href="https://help.li.me/hc/en-us/articles/115004914208-Ride-costs-and-rates" target="_blank" rel="noreferrer">Lime｜App 即時費率說明</a></li>
+            <li><a href="https://bolt.eu/en/scooters/" target="_blank" rel="noreferrer">Bolt｜App 費率與套票說明</a></li>
+            <li><a href="https://ridedott.com/ride-with-us/" target="_blank" rel="noreferrer">Dott｜App 費率與 pass 說明</a></li>
+            <li><a href="https://www.ryde-technology.com/help/how-much-does-it-cost" target="_blank" rel="noreferrer">Ryde｜App 即時費率說明</a></li>
           </ul>
         </div>
       </section>
