@@ -71,9 +71,11 @@ const lyricsPanel = document.getElementById('lyrics-panel');
 const lyricsToggle = document.querySelector('.lyrics-toggle');
 const lyricsClose = document.querySelector('.lyrics-close');
 const lyricsScroll = document.getElementById('lyrics-scroll');
+const musicStatus = document.getElementById('music-status');
 const lyricEntries = [];
 let activeLyricIndex = -1;
 let lyricsDismissed = false;
+let lyricAnimationFrame = 0;
 
 function lyricLanguage(sectionLanguage, text) {
   if (text.startsWith('🇩🇰')) return 'dk';
@@ -146,8 +148,22 @@ function updateLyrics(time, forceScroll = false) {
   active?.classList.add('is-current');
   activeLyricIndex = nextIndex;
   if (!lyricsPanel?.hidden && active && lyricsScroll) {
-    lyricsScroll.scrollTo({ top: Math.max(0, active.offsetTop - lyricsScroll.clientHeight * 0.42), behavior: 'smooth' });
+    const targetTop = Math.max(0, active.offsetTop - lyricsScroll.clientHeight * 0.42);
+    if (typeof lyricsScroll.scrollTo === 'function') lyricsScroll.scrollTo({ top: targetTop, behavior: 'smooth' });
+    else lyricsScroll.scrollTop = targetTop;
   }
+}
+
+function syncLyricsContinuously() {
+  if (!backgroundMusic || backgroundMusic.paused) return;
+  updateLyrics(backgroundMusic.currentTime);
+  lyricAnimationFrame = window.requestAnimationFrame(syncLyricsContinuously);
+}
+
+function setMusicStatus(message, isError = false) {
+  if (!musicStatus) return;
+  musicStatus.textContent = message;
+  musicStatus.classList.toggle('is-error', isError);
 }
 
 renderLyrics();
@@ -175,11 +191,11 @@ async function playBackgroundMusic() {
   backgroundMusic.volume = 0.32;
   try {
     await backgroundMusic.play();
-    updateMusicButton(true);
-    if (!lyricsDismissed) setLyricsOpen(true);
     return true;
   } catch {
     updateMusicButton(false);
+    setLyricsOpen(true);
+    setMusicStatus('手機瀏覽器已阻擋自動播放，請按上方原生播放鍵。', true);
     return false;
   }
 }
@@ -197,13 +213,31 @@ musicToggle?.addEventListener('click', async () => {
 
 window.addEventListener('load', playBackgroundMusic, { once: true });
 document.addEventListener('pointerdown', (event) => {
-  if (!event.target.closest('.music-toggle') && backgroundMusic?.paused) playBackgroundMusic();
+  if (!event.target.closest('.music-dock, .lyrics-panel') && backgroundMusic?.paused) playBackgroundMusic();
 }, { once: true });
 
 backgroundMusic?.addEventListener('loadedmetadata', () => {
   buildLyricTimeline();
   updateLyrics(backgroundMusic.currentTime, true);
+  setMusicStatus(`歌曲已就緒 · ${Math.floor(backgroundMusic.duration / 60)}:${String(Math.floor(backgroundMusic.duration % 60)).padStart(2, '0')}`);
 });
 backgroundMusic?.addEventListener('durationchange', buildLyricTimeline);
 backgroundMusic?.addEventListener('timeupdate', () => updateLyrics(backgroundMusic.currentTime));
 backgroundMusic?.addEventListener('seeked', () => updateLyrics(backgroundMusic.currentTime, true));
+backgroundMusic?.addEventListener('play', () => {
+  updateMusicButton(true);
+  setMusicStatus('播放中 · 歌詞會隨音樂自動捲動');
+  if (!lyricsDismissed) setLyricsOpen(true);
+  window.cancelAnimationFrame(lyricAnimationFrame);
+  lyricAnimationFrame = window.requestAnimationFrame(syncLyricsContinuously);
+});
+backgroundMusic?.addEventListener('pause', () => {
+  updateMusicButton(false);
+  window.cancelAnimationFrame(lyricAnimationFrame);
+  if (backgroundMusic.currentTime > 0) setMusicStatus('已暫停 · 按播放鍵可繼續');
+});
+backgroundMusic?.addEventListener('error', () => {
+  updateMusicButton(false);
+  setLyricsOpen(true);
+  setMusicStatus('音樂載入失敗，請重新整理頁面後再試。', true);
+});
