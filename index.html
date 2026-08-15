@@ -128,6 +128,33 @@
     font-size:24px; font-weight:800; color:var(--water); margin:10px 0 4px;
   }
 
+  .table-title{margin:36px 2px 14px; font-size:17px; font-weight:800; color:var(--text);}
+  .table-wrap{
+    overflow-x:auto; border-radius:14px; border:1px solid var(--line); background:var(--bg-card);
+    box-shadow:var(--shadow);
+  }
+  .water-table{width:100%; border-collapse:collapse; font-size:13.5px; white-space:nowrap;}
+  .water-table th, .water-table td{
+    padding:13px 16px; text-align:left; border-bottom:1px solid var(--line); white-space:normal;
+  }
+  .water-table thead th{
+    background:var(--accent-soft); color:var(--water); font-size:12.5px;
+    text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
+  }
+  .water-table tbody th{color:var(--text); font-weight:700; white-space:nowrap;}
+  .water-table tbody tr:last-child th, .water-table tbody tr:last-child td{border-bottom:none;}
+  .water-table .table-divider td{
+    background:var(--bg); color:var(--text-soft); font-size:12px; font-weight:700;
+    padding:9px 16px; letter-spacing:.03em;
+  }
+  .chip{
+    display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700;
+    white-space:nowrap;
+  }
+  .chip-none{background:var(--accent-soft); color:var(--water);}
+  .chip-mid{background:var(--line); color:var(--text);}
+  .table-footnote{margin:12px 2px 0; font-size:12.5px; color:var(--text-soft);}
+
   .diagram-card{
     margin-top:16px; padding:20px 16px 14px; border-radius:14px;
     background:var(--bg); border:1px solid var(--line);
@@ -418,6 +445,68 @@
         <p>九成用水來自馬里達湖，湖區周邊禁止游泳釣魚，從源頭杜絕污染。</p>
       </div>
     </div>
+
+    <h3 class="table-title">四城水質處理流程一次比較</h3>
+    <div class="table-wrap" tabindex="0" aria-label="北歐四城飲用水處理方式比較表，可水平捲動">
+      <table class="water-table">
+        <thead>
+          <tr>
+            <th scope="col">城市</th>
+            <th scope="col">水源</th>
+            <th scope="col">淨水處理</th>
+            <th scope="col">消毒方式</th>
+            <th scope="col">特色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">🇩🇰 哥本哈根</th>
+            <td>白堊岩層地下水</td>
+            <td>曝氣＋砂濾</td>
+            <td><span class="chip chip-none">不加氯</span></td>
+            <td>2009 年起完全零氯，40–60 年天然滲透過濾</td>
+          </tr>
+          <tr>
+            <th scope="row">🇸🇪 斯德哥爾摩</th>
+            <td>梅拉倫湖（地表水）</td>
+            <td>絮凝＋沉澱＋砂濾</td>
+            <td><span class="chip chip-mid">UV＋氯胺</span></td>
+            <td>軟水（約 3–8 °dH），2025 年獲評歐洲最佳口感</td>
+          </tr>
+          <tr>
+            <th scope="row">🇫🇮 赫爾辛基</th>
+            <td>佩伊揚湖，120 公里岩石隧道引水</td>
+            <td>絮凝＋砂濾＋<b>臭氧</b>＋活性碳</td>
+            <td><span class="chip chip-mid">UV＋微量氯胺</span></td>
+            <td>多重把關，2025 歐洲水質指數細菌數全歐最低</td>
+          </tr>
+          <tr>
+            <th scope="row">🇳🇴 奧斯陸</th>
+            <td>馬里達湖（受保護水源）</td>
+            <td>Actiflo 混凝沉澱＋濾料過濾</td>
+            <td><span class="chip chip-none">僅 UV，不加氯</span></td>
+            <td>北歐最大市政級淨水廠，另加 CO₂／石灰調整酸鹼度防管線腐蝕</td>
+          </tr>
+          <tr class="table-divider"><td colspan="5">延伸比較：不只首都，行程內外的知名好水</td></tr>
+          <tr>
+            <th scope="row">🇫🇮 拉普蘭・羅凡聶米</th>
+            <td>北極圈冰河與湖泊補注地下水</td>
+            <td>幾乎不需處理</td>
+            <td><span class="chip chip-none">天然潔淨，免加藥</span></td>
+            <td>水質好到比店裡賣的瓶裝水還乾淨，行程 Day04–05 途經</td>
+          </tr>
+          <tr>
+            <th scope="row">🇳🇴 Voss 沃斯</th>
+            <td>南部 Iveland／Vatnestrøm 深層含水層</td>
+            <td>天然岩層砂層過濾</td>
+            <td><span class="chip chip-none">未加工裝瓶</span></td>
+            <td>全球知名精品瓶裝水，但實際水源在距離 Voss 鎮 400 多公里外的 Agder 郡，跟行程無直接關係，純屬品牌冷知識</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-footnote">哥本哈根、奧斯陸走「水源夠乾淨、少加工」路線；斯德哥爾摩、赫爾辛基則靠多重過濾＋消毒把關——兩種邏輯殊途同歸，結果都是打開水龍頭就能喝。拉普蘭與 Voss 則說明北歐的「好水」不只在四座首都。</p>
+
     <div class="callout">
       <h4>行程小提醒</h4>
       <p>斯德哥爾摩、赫爾辛基、哥本哈根、奧斯陸的自來水都可以直接生飲，飯店房間水龍頭打開就能喝，不用特別買瓶裝水；唯獨北角、伊瓦洛等偏遠山區若住宿地有標示「非飲用水 Not potable」才需要注意。</p>
@@ -472,6 +561,7 @@
     <ul class="src-list">
       <li>影片內容：YouTube《大開眼界》〈乾淨到變態！東京慘跌第3？擊敗新加坡、登頂全球的居然是它？〉，2026/8/14 上架</li>
       <li>飲用水資料：Stockholm Vatten och Avfall 官方水質報告、City of Helsinki 官方用水說明、Oslo 市政府 Maridalsvannet 水源保護資料、哥本哈根供水公司官方說明（HOFOR）</li>
+      <li>水質處理流程：HSY（赫爾辛基）官方淨水流程說明、Oslo VAV／Oset 淨水廠資料、Rovaniemi／Business Lapland 官方介紹、Voss Water 官方資訊與 2010 年 TV 2 水源報導</li>
       <li>低碳移動資料：City of Copenhagen Bicycle Strategy（use.metropolis.org）、The Copenhagenize Index 2025（EIT Urban Mobility）、PLOS One 期刊自行車通勤碳排放研究</li>
     </ul>
     <a class="backlink" href="https://maskywg.github.io/northeurope/北歐四國">← 回到北歐四國行程主頁</a>
