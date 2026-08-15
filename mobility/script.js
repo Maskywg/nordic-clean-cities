@@ -99,7 +99,14 @@ function renderLyrics() {
       line.dataset.lang = lyricLanguage(section.lang, text);
       line.textContent = text;
       lyricsScroll.appendChild(line);
-      const entry = { element: line, text, sectionStart: lineIndex === 0, start: 0 };
+      const fixedStart = section.times?.[lineIndex];
+      const entry = {
+        element: line,
+        text,
+        sectionStart: lineIndex === 0,
+        start: Number.isFinite(fixedStart) ? fixedStart : 0,
+        hasFixedStart: Number.isFinite(fixedStart)
+      };
       lyricEntries.push(entry);
       line.addEventListener('click', async () => {
         if (!backgroundMusic) return;
@@ -119,6 +126,7 @@ function setLyricsOpen(open) {
 
 function buildLyricTimeline() {
   if (!backgroundMusic || !Number.isFinite(backgroundMusic.duration) || !lyricEntries.length) return;
+  if (lyricEntries.every((entry) => entry.hasFixedStart)) return;
   const lead = 3.5;
   const usable = Math.max(1, backgroundMusic.duration - lead - 3);
   const weights = lyricEntries.map(({ text, sectionStart }) => {
