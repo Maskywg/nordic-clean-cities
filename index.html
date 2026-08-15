@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北歐城市為什麼這麼乾淨？</title>
+<meta name="description" content="從全球最乾淨城市排行看北歐：斯德哥爾摩、赫爾辛基、哥本哈根、奧斯陸如何維持乾淨市容，以及北歐飲用水水質為何名列世界前茅。">
+<style>
+  :root{
+    --bg:#f5f8fa;
+    --bg-card:#ffffff;
+    --text:#1b2a33;
+    --text-soft:#516573;
+    --accent:#1c7ed6;
+    --accent-soft:#e7f3ff;
+    --line:#dbe6ec;
+    --water:#0b7285;
+    --shadow:0 4px 20px rgba(20,50,70,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0d1b22;
+      --bg-card:#12242d;
+      --text:#e8f1f5;
+      --text-soft:#9db3bd;
+      --accent:#4dabf7;
+      --accent-soft:#123544;
+      --line:#20404c;
+      --water:#3bc9db;
+      --shadow:0 4px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1b22; --bg-card:#12242d; --text:#e8f1f5; --text-soft:#9db3bd;
+    --accent:#4dabf7; --accent-soft:#123544; --line:#20404c; --water:#3bc9db;
+    --shadow:0 4px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"]{
+    --bg:#f5f8fa; --bg-card:#ffffff; --text:#1b2a33; --text-soft:#516573;
+    --accent:#1c7ed6; --accent-soft:#e7f3ff; --line:#dbe6ec; --water:#0b7285;
+    --shadow:0 4px 20px rgba(20,50,70,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 20px;}
+  header.hero{
+    padding:72px 20px 56px; text-align:center;
+    background:linear-gradient(180deg,var(--accent-soft),var(--bg) 90%);
+    border-bottom:1px solid var(--line);
+  }
+  header.hero .eyebrow{
+    display:inline-block; font-size:13px; letter-spacing:.12em; color:var(--water);
+    text-transform:uppercase; font-weight:700; margin-bottom:14px;
+  }
+  header.hero h1{
+    font-size:clamp(28px,5vw,44px); margin:0 0 16px; letter-spacing:.02em;
+  }
+  header.hero p.sub{
+    max-width:620px; margin:0 auto; color:var(--text-soft); font-size:16px;
+  }
+  .source-chip{
+    display:inline-flex; align-items:center; gap:6px; margin-top:22px; padding:8px 16px;
+    background:var(--bg-card); border:1px solid var(--line); border-radius:999px;
+    font-size:13px; color:var(--text-soft); box-shadow:var(--shadow);
+  }
+  section{padding:56px 0;}
+  h2.section-title{
+    font-size:clamp(22px,3.4vw,30px); margin:0 0 8px; display:flex; align-items:baseline; gap:10px;
+  }
+  h2.section-title .num{color:var(--water); font-weight:800;}
+  p.section-lead{color:var(--text-soft); max-width:680px; margin:0 0 36px; font-size:15px;}
+
+  .ranking-strip{
+    display:flex; gap:12px; overflow-x:auto; padding:6px 2px 18px; margin-bottom:8px;
+  }
+  .rank-pill{
+    flex:0 0 auto; padding:10px 16px; border-radius:12px; background:var(--bg-card);
+    border:1px solid var(--line); font-size:13px; color:var(--text-soft); white-space:nowrap;
+  }
+  .rank-pill b{color:var(--text); font-size:15px;}
+  .rank-pill.nordic{border-color:var(--water); background:var(--accent-soft); color:var(--water);}
+  .rank-pill.nordic b{color:var(--water);}
+
+  .city-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:20px;
+    overflow:hidden; box-shadow:var(--shadow); margin-bottom:40px;
+  }
+  .city-card .photos{
+    display:grid; grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; gap:2px;
+    height:320px;
+  }
+  .city-card .photos img{width:100%; height:100%; object-fit:cover; display:block;}
+  .city-card .photos img:first-child{grid-row:1/3;}
+  .city-card .body{padding:28px 28px 30px;}
+  .city-card .title-row{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    margin-bottom:6px;
+  }
+  .city-card h3{margin:0; font-size:22px;}
+  .badge{
+    font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px;
+    background:var(--accent-soft); color:var(--water); white-space:nowrap;
+  }
+  .city-card .why{
+    margin:14px 0 0; padding:14px 16px; border-radius:12px; background:var(--bg);
+    border-left:3px solid var(--water); font-size:14.5px; color:var(--text);
+  }
+  .city-card .why b{color:var(--water);}
+  .city-card .water-fact{
+    margin-top:14px; font-size:14px; color:var(--text-soft); display:flex; gap:8px;
+  }
+  .city-card .water-fact .icon{flex:0 0 auto;}
+
+  .water-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px;
+  }
+  .water-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:16px; padding:22px;
+    box-shadow:var(--shadow);
+  }
+  .water-card h4{margin:0 0 10px; font-size:16px; display:flex; align-items:center; gap:8px;}
+  .water-card p{margin:0; font-size:13.5px; color:var(--text-soft);}
+  .water-card .stat{
+    font-size:24px; font-weight:800; color:var(--water); margin:10px 0 4px;
+  }
+
+  .callout{
+    background:var(--accent-soft); border-radius:18px; padding:28px 30px; margin-top:32px;
+    border:1px solid var(--line);
+  }
+  .callout h4{margin:0 0 10px; color:var(--water);}
+  .callout p{margin:0; font-size:14.5px; color:var(--text);}
+
+  footer{
+    padding:40px 20px 60px; border-top:1px solid var(--line); margin-top:20px;
+  }
+  footer .wrap{font-size:13px; color:var(--text-soft);}
+  footer a{color:var(--water);}
+  .src-list{margin:14px 0 0; padding-left:18px;}
+  .src-list li{margin-bottom:6px;}
+
+  .backlink{
+    display:inline-flex; align-items:center; gap:6px; margin-top:24px; font-size:13px;
+    color:var(--water); text-decoration:none; border:1px solid var(--line); padding:8px 14px;
+    border-radius:999px; background:var(--bg-card);
+  }
+
+  @media (max-width:640px){
+    .city-card .photos{grid-template-columns:1fr 1fr; height:220px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">北歐四國行程 · 延伸小知識</span>
+    <h1>北歐城市，為什麼這麼乾淨？</h1>
+    <p class="sub">東京、新加坡都拿不到世界最乾淨城市第一名，反而是北歐城市屢屢上榜。從垃圾處理到自來水水質，整理這趟行程會走過的斯德哥爾摩、赫爾辛基、哥本哈根、奧斯陸，乾淨背後各自的門道。</p>
+    <div class="source-chip">▶️ 資料來源：YouTube《大開眼界》〈乾淨到變態！東京慘跌第3？擊敗新加坡、登頂全球的居然是它？〉2026/8/14</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title"><span class="num">01</span> 全球最乾淨城市榜，北歐佔了快一半</h2>
+    <p class="section-lead">影片盤點全球最乾淨的 10 座城市，東京只排第 3、新加坡第 2，前 10 名裡北歐城市就佔了 4 席（另加冰島雷克雅維克，但此行程沒有安排冰島）。</p>
+    <div class="ranking-strip">
+      <div class="rank-pill"><b>01</b> 蘇黎世・瑞士</div>
+      <div class="rank-pill"><b>02</b> 新加坡</div>
+      <div class="rank-pill"><b>03</b> 東京・日本</div>
+      <div class="rank-pill nordic"><b>04</b> 哥本哈根・丹麥</div>
+      <div class="rank-pill"><b>05</b> 維也納・奧地利</div>
+      <div class="rank-pill nordic"><b>06</b> 雷克雅維克・冰島</div>
+      <div class="rank-pill nordic"><b>07</b> 斯德哥爾摩・瑞典</div>
+      <div class="rank-pill nordic"><b>08</b> 赫爾辛基・芬蘭</div>
+      <div class="rank-pill"><b>09</b> 盧森堡市</div>
+      <div class="rank-pill"><b>10</b> 慕尼黑・德國</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title"><span class="num">02</span> 行程會走過的四座乾淨城市</h2>
+    <p class="section-lead">奧斯陸雖然沒有在影片榜單上，但身為北歐首都、又是行程一站，這裡也一併整理它在環境治理上的表現。照片為實際旅拍，已用 AI 去除路人以呈現乾淨市容。</p>
+
+    <div class="city-card">
+      <div class="photos">
+        <img src="images/copenhagen-1.jpg" alt="哥本哈根新港運河屋">
+        <img src="images/copenhagen-2.jpg" alt="哥本哈根 Gefion 噴泉">
+        <img src="images/copenhagen-3.jpg" alt="哥本哈根歌劇院廣場">
+      </div>
+      <div class="body">
+        <div class="title-row">
+          <h3>哥本哈根 Copenhagen</h3>
+          <span class="badge">全球第 4 名</span>
+        </div>
+        <div class="why"><b>關鍵一招：</b>市區焚化廠 CopenHill（Amager Bakke）把垃圾處理設施蓋成一座人工滑雪場，屋頂還能滑雪、攀岩、健行，垃圾焚化與市民休閒空間結合在一起，發電同時也是地標。搭配全民自行車通勤文化，市容整潔不靠拚命打掃，而是從源頭把「處理垃圾」這件事融入城市生活。</div>
+        <div class="water-fact"><span class="icon">💧</span> 自來水取自地下白堊岩層地下水，水質好到<b>2009 年起完全不加氯</b>，只做簡單曝氣與砂濾，是歐洲少數可以直接生飲、幾乎零化學處理的都市自來水系統之一。</div>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="photos">
+        <img src="images/stockholm-1.jpg" alt="斯德哥爾摩老城區噴泉">
+        <img src="images/stockholm-2.jpg" alt="斯德哥爾摩市政廳湖畔">
+        <img src="images/stockholm-3.jpg" alt="斯德哥爾摩古斯塔夫三世廣場">
+      </div>
+      <div class="body">
+        <div class="title-row">
+          <h3>斯德哥爾摩 Stockholm</h3>
+          <span class="badge">全球第 7 名</span>
+        </div>
+        <div class="why"><b>關鍵一招：</b>回收與焚化發電效率太高，本國垃圾根本不夠燒，瑞典近十年反而固定向英國、挪威等國「進口垃圾」餵發電廠，順便賺處理費——垃圾在這裡是能源原料，不是廢棄物。街區普遍設有分類回收桶，把「丟垃圾」這件事拆解到源頭。</div>
+        <div class="water-fact"><span class="icon">💧</span> 水源取自梅拉倫湖（Lake Mälaren），經絮凝、沉澱、砂濾、紫外線多重處理後供應超過 200 萬人，2025 年曾被評為「歐洲最好喝的自來水」。</div>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="photos">
+        <img src="images/helsinki-1.jpg" alt="赫爾辛基元老院廣場電車">
+        <img src="images/helsinki-2.jpg" alt="赫爾辛基政府大樓">
+        <img src="images/helsinki-3.jpg" alt="赫爾辛基港口天際線">
+      </div>
+      <div class="body">
+        <div class="title-row">
+          <h3>赫爾辛基 Helsinki</h3>
+          <span class="badge">全球第 8 名</span>
+        </div>
+        <div class="why"><b>關鍵一招：</b>開創性打造「地底氣壓垃圾管道系統」——住宅區地面只留小型投入口，垃圾靠強力氣壓瞬間吸走，經地下管線直送處理站，市區街道因此幾乎看不到垃圾車與外露垃圾桶，從根本上減少「垃圾在街上曝光」的機會。</div>
+        <div class="water-fact"><span class="icon">💧</span> 水源來自芬蘭第二大湖佩伊揚湖（Päijänne），透過全球數一數二長的岩石引水隧道送進市區。2025 年歐洲水質指數評比中，芬蘭自來水細菌數最低、純淨度全歐第一。</div>
+      </div>
+    </div>
+
+    <div class="city-card">
+      <div class="photos">
+        <img src="images/oslo-1.jpg" alt="奧斯陸港灣與歌劇院">
+        <img src="images/oslo-2.jpg" alt="奧斯陸維吉蘭公園">
+        <img src="images/oslo-3.jpg" alt="奧斯陸歌劇院白色屋頂">
+      </div>
+      <div class="body">
+        <div class="title-row">
+          <h3>奧斯陸 Oslo</h3>
+          <span class="badge">未上榜，但表現亮眼</span>
+        </div>
+        <div class="why"><b>關鍵一招：</b>影片沒有把奧斯陸列進前十，但它是全球電動車滲透率最高的首都之一，加上幾乎全境仰賴水力發電，市區交通與能源本身就低污染。維吉蘭公園（Vigeland Park）等大型市民公園由市府長期投入園藝維護，把「乾淨」延伸成城市綠地的日常管理，而非只靠一次性清潔。</div>
+        <div class="water-fact"><span class="icon">💧</span> 全市九成用水來自市郊受嚴格保護的馬里達湖（Maridalsvannet）——湖區周邊土地由市政府持有，禁止游泳、釣魚與水上活動，從水源地就杜絕污染，2025 年報告指出其自來水潔淨度優於多數歐洲市售瓶裝水。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title"><span class="num">03</span> 順便聊聊：北歐的飲用水到底多乾淨</h2>
+    <p class="section-lead">北歐四座城市剛好代表了自來水的兩種極端做法：哥本哈根、奧斯陸幾乎「不處理」（因為水源地本身夠乾淨），斯德哥爾摩、赫爾辛基則是「處理到位」（多重過濾＋長程引水），殊途同歸都做到可以直接生飲。</p>
+    <div class="water-grid">
+      <div class="water-card">
+        <h4>🇩🇰 哥本哈根</h4>
+        <div class="stat">地下水</div>
+        <p>白堊岩層地下水，2009 年起不加氯，僅曝氣＋砂濾，40–60 年天然滲透過濾。</p>
+      </div>
+      <div class="water-card">
+        <h4>🇸🇪 斯德哥爾摩</h4>
+        <div class="stat">湖泊＋多重處理</div>
+        <p>梅拉倫湖水經絮凝、砂濾、紫外線處理，供應逾 200 萬人，2025 年獲評歐洲最佳口感。</p>
+      </div>
+      <div class="water-card">
+        <h4>🇫🇮 赫爾辛基</h4>
+        <div class="stat">長程隧道引水</div>
+        <p>佩伊揚湖經岩石隧道送入市區，2025 年歐洲水質指數細菌數全歐最低。</p>
+      </div>
+      <div class="water-card">
+        <h4>🇳🇴 奧斯陸</h4>
+        <div class="stat">受保護湖泊</div>
+        <p>九成用水來自馬里達湖，湖區周邊禁止游泳釣魚，從源頭杜絕污染。</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h4>行程小提醒</h4>
+      <p>斯德哥爾摩、赫爾辛基、哥本哈根、奧斯陸的自來水都可以直接生飲，飯店房間水龍頭打開就能喝，不用特別買瓶裝水；唯獨北角、伊瓦洛等偏遠山區若住宿地有標示「非飲用水 Not potable」才需要注意。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>本頁為「全覽北歐四國・北角日不落 15 日」行程網頁的延伸整理。</p>
+    <ul class="src-list">
+      <li>影片內容：YouTube《大開眼界》〈乾淨到變態！東京慘跌第3？擊敗新加坡、登頂全球的居然是它？〉，2026/8/14 上架</li>
+      <li>飲用水資料：Stockholm Vatten och Avfall 官方水質報告、City of Helsinki 官方用水說明、Oslo 市政府 Maridalsvannet 水源保護資料、哥本哈根供水公司官方說明（HOFOR）</li>
+    </ul>
+    <a class="backlink" href="https://maskywg.github.io/northeurope/北歐四國">← 回到北歐四國行程主頁</a>
+  </div>
+</footer>
+
+</body>
+</html>
