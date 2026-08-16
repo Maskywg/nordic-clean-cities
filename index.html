@@ -95,6 +95,13 @@
   }
   .city-card .photos img{width:100%; height:100%; object-fit:cover; display:block;}
   .city-card .photos img:first-child{grid-row:1/3;}
+  .city-card .photos.photos-4{height:auto; grid-template-columns:1fr 1fr; grid-template-rows:auto auto;}
+  .city-card .photos.photos-4 img,
+  .city-card .photos.photos-4 .photo-cell-annotate{aspect-ratio:4/3; grid-row:auto; height:auto;}
+  .photo-cell-annotate{position:relative; display:block; overflow:hidden;}
+  .photo-cell-annotate img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-cell-annotate .annotate-overlay{position:absolute; inset:0; width:100%; height:100%; display:block;}
+  .gallery-credit{padding:14px 28px 0; margin:0; font-size:12px; color:var(--text-soft);}
   .city-card .body{padding:28px 28px 30px;}
   .city-card .title-row{
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -159,11 +166,7 @@
     margin-top:16px; padding:20px 16px 14px; border-radius:14px;
     background:var(--bg); border:1px solid var(--line);
   }
-  .annotate-card{padding:28px 28px 0;}
-  .photo-annotate{position:relative; border-radius:14px; overflow:hidden; box-shadow:var(--shadow);}
-  .photo-annotate img{width:100%; height:auto; display:block;}
   .annotate-overlay{position:absolute; inset:0; width:100%; height:100%;}
-  .annotate-card .photo-credit{margin-top:10px;}
   .diagram-title{
     font-size:13px; font-weight:700; color:var(--text-soft); margin-bottom:8px; text-align:center;
   }
@@ -248,14 +251,11 @@
     <p class="section-lead">奧斯陸雖然沒有在影片榜單上，但身為北歐首都、又是行程一站，這裡也一併整理它在環境治理上的表現。照片為實際旅拍，已用 AI 去除路人以呈現乾淨市容。</p>
 
     <div class="city-card">
-      <div class="photos">
+      <div class="photos photos-4">
         <img src="images/copenhagen-1.jpg" alt="哥本哈根新港運河屋">
         <img src="images/copenhagen-2.jpg" alt="哥本哈根 Gefion 噴泉">
         <img src="images/copenhagen-3.jpg" alt="哥本哈根歌劇院廣場">
-      </div>
-
-      <div class="annotate-card">
-        <div class="photo-annotate">
+        <div class="photo-cell-annotate">
           <img src="images/copenhagen-dannebrog-copenhill.jpg" alt="丹麥皇家遊艇 Dannebrog 停泊於 Nyholm，背景可見 CopenHill 焚化發電廠冒著白煙">
           <svg class="annotate-overlay" viewBox="0 0 1000 750" preserveAspectRatio="none" role="img" aria-label="標示出 CopenHill 焚化發電廠在畫面中的位置">
             <line x1="765" y1="90" x2="825" y2="440" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
@@ -268,8 +268,8 @@
             </g>
           </svg>
         </div>
-        <p class="photo-credit">實拍照片：丹麥皇家遊艇 Dannebrog 停泊於 Nyholm 海軍基地，右側為 18 世紀桅杆吊車 Mastekranen，背景可見 CopenHill 冒著白煙的煙囪與滑雪坡道屋頂。</p>
       </div>
+      <p class="gallery-credit">右下實拍照片：丹麥皇家遊艇 Dannebrog 停泊於 Nyholm 海軍基地，右側為 18 世紀桅杆吊車 Mastekranen，背景可見 CopenHill 冒著白煙的煙囪與滑雪坡道屋頂。</p>
 
       <div class="body">
         <div class="title-row">
